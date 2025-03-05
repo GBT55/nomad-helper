@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"strings"
 
-	api "github.com/hashicorp/nomad/api"
+	"github.com/hashicorp/nomad/api"
 )
 
 type PropReader interface {
@@ -85,6 +85,9 @@ func (r *Reader) getPropValue(prop string, node *api.Node) (string, error) {
 
 	case "nodeclass", "class":
 		return node.NodeClass, nil
+
+	case "nodepool", "pool":
+		return node.NodePool, nil
 
 	case "id":
 		return node.ID, nil
