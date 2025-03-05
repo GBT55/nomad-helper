@@ -5,7 +5,7 @@ import (
 	"strings"
 
 	log "github.com/sirupsen/logrus"
-	cli "github.com/urfave/cli"
+	"github.com/urfave/cli"
 )
 
 func Stats(c *cli.Context) error {

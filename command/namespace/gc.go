@@ -5,7 +5,7 @@ import (
 
 	"github.com/hashicorp/nomad/api"
 	log "github.com/sirupsen/logrus"
-	cli "github.com/urfave/cli"
+	"github.com/urfave/cli"
 )
 
 func GC(c *cli.Context, logger *log.Logger) error {
