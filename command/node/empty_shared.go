@@ -6,7 +6,7 @@ import (
 	"github.com/hashicorp/nomad/api"
 	"github.com/seatgeek/nomad-helper/helpers"
 	log "github.com/sirupsen/logrus"
-	cli "github.com/urfave/cli"
+	"github.com/urfave/cli"
 )
 
 var emptyDefaultFields = []string{"name", "status", "SchedulingEligibility", "drain", "class"}

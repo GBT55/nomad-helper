@@ -25,6 +25,7 @@ var (
 type ClientFilter struct {
 	Attribute   []string
 	Class       string
+	Pool        string
 	Eligibility string
 	Meta        []string
 	NOOP        bool
@@ -37,6 +38,7 @@ func ClientFilterFromCLI(c *cli.Context) ClientFilter {
 	filter := ClientFilter{
 		Attribute:   DeleteEmpty(c.StringSlice("filter-attribute")),
 		Class:       c.String("filter-class"),
+		Pool:        c.String("filter-pool"),
 		Eligibility: c.String("filter-eligibility"),
 		Meta:        DeleteEmpty(c.StringSlice("filter-meta")),
 		NOOP:        c.Bool("noop"),
@@ -52,6 +54,7 @@ func ClientFilterFromWeb(r *http.Request) ClientFilter {
 	filter := ClientFilter{
 		Attribute:   DeleteEmpty(strings.Split(r.URL.Query().Get("filter-attribute"), ",")),
 		Class:       r.URL.Query().Get("filter-class"),
+		Pool:        r.URL.Query().Get("filter-pool"),
 		Eligibility: r.URL.Query().Get("filter-eligibility"),
 		Meta:        DeleteEmpty(strings.Split(r.URL.Query().Get("filter-meta"), ",")),
 		Percent:     100,
@@ -159,6 +162,11 @@ func readNodeWorker(filter ClientFilter, client *api.Client) func(payload interf
 		// only consider nodes with the right node class
 		if class := filter.Class; class != "" && nodeStub.NodeClass != class {
 			stderrLog.Debugf("Node %s class '%s' do not match expected value '%s'", nodeStub.Name, nodeStub.NodeClass, class)
+			return nil
+		}
+
+		if pool := filter.Pool; pool != "" && nodeStub.NodePool != pool {
+			stderrLog.Debugf("Node %s pool '%s' do not match expected value '%s'", nodeStub.Name, nodeStub.NodePool, pool)
 			return nil
 		}
 

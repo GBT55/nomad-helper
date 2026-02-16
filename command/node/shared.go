@@ -6,7 +6,7 @@ import (
 	"github.com/hashicorp/nomad/api"
 	"github.com/seatgeek/nomad-helper/helpers"
 	log "github.com/sirupsen/logrus"
-	cli "github.com/urfave/cli"
+	"github.com/urfave/cli"
 )
 
 func get(m []*result, name string) (*result, bool) {

@@ -11,7 +11,7 @@ import (
 
 	"github.com/hashicorp/nomad/api"
 	"github.com/mitchellh/colorstring"
-	cli "github.com/urfave/cli"
+	"github.com/urfave/cli"
 )
 
 func FindAllocation(c *cli.Context, client *api.Client) (*api.Allocation, error) {

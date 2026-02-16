@@ -12,7 +12,7 @@ import (
 	"github.com/seatgeek/nomad-helper/command/node"
 	"github.com/seatgeek/nomad-helper/helpers"
 	log "github.com/sirupsen/logrus"
-	cli "github.com/urfave/cli"
+	"github.com/urfave/cli"
 )
 
 func Run(a *cli.App, c *cli.Context, logger *log.Logger) error {

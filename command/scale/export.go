@@ -10,7 +10,7 @@ import (
 	"github.com/seatgeek/nomad-helper/nomad"
 	"github.com/seatgeek/nomad-helper/structs"
 	log "github.com/sirupsen/logrus"
-	yaml "gopkg.in/yaml.v2"
+	"gopkg.in/yaml.v2"
 )
 
 func ExportCommand(file string) error {
